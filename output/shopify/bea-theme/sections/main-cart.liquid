@@ -7,7 +7,7 @@
       <form action="{{ routes.cart_url }}" method="post" style="margin-top:40px;">
         {% for item in cart.items %}
           <div class="cart-item-row" style="padding-block:24px;">
-            <img class="cart-item-thumb" style="width:90px;height:90px;" src="{{ item.image | default: 'guide-cover.png' | asset_url }}" alt="{{ item.title | escape }}">
+            <img class="cart-item-thumb" width="90" height="90" style="width:90px;height:90px;" src="{{ item.image | default: 'guide-cover.png' | asset_url }}" alt="{{ item.title | escape }}">
             <div class="cart-item-info">
               <h3>{{ item.product.title | escape }}</h3>
               <div class="cart-item-price" style="font-size:20px;margin-block:6px;">{{ item.final_price | money_with_currency }}</div>

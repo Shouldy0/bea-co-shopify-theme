@@ -345,7 +345,7 @@
 
         <!-- Purchase Form -->
         <div class="purchase-controls">
-          <form action="/cart/add" method="post" enctype="multipart/form-data" id="FeaturedProductForm">
+          <form action="" method="post" enctype="multipart/form-data" id="FeaturedProductForm">
             <input type="hidden" name="id" value="1">
             
             <div class="quantity-row" style="margin-bottom:16px;">
@@ -447,7 +447,7 @@
   <div class="container">
     <div class="story-grid">
       <div class="story-photo-wrap">
-        <img class="story-photo" src="/assets/bea.jpg" alt="Bea, the inspiration behind the project" loading="lazy">
+        <img class="story-photo" width="1200" height="1600" src="/assets/bea.jpg" alt="Bea, the inspiration behind the project" loading="lazy">
       </div>
 
       <div class="story-content">
@@ -702,13 +702,13 @@
     <div class="sticky-atc-bar" data-sticky-atc-bar>
   <div class="sticky-atc-inner">
     <div class="sticky-atc-info">
-      <img class="sticky-atc-thumb" src="/assets/guide-cover.png" alt="Bea's Calm-Alone Kit Cover">
+      <img class="sticky-atc-thumb" width="48" height="48" src="/assets/guide-cover.png" alt="Bea's Calm-Alone Kit Cover">
       <div>
         <div class="sticky-atc-title">Bea's Calm-Alone Kit (Complete 3-in-1 Bundle)</div>
         <div class="sticky-atc-price">$29.00 USD <span style="font-size:12px;text-decoration:line-through;color:var(--color-ink-light)">$39.00</span></div>
       </div>
     </div>
-    <form action="/cart/add" method="post" style="margin:0;">
+    <form action="" method="post" style="margin:0;">
       <input type="hidden" name="id" value="1">
       <input type="hidden" name="quantity" value="1">
       <button type="submit" class="btn btn-caramel" style="padding:12px 24px;">
@@ -720,6 +720,6 @@
 
   
 
-  <script src="/assets/theme.js"></script>
+  <script src="/assets/theme.js" defer="defer"></script>
 </body>
 </html>

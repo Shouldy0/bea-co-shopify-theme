@@ -21,7 +21,7 @@
       {% if cart.item_count > 0 %}
         {% for item in cart.items %}
           <div class="cart-item-row">
-            <img class="cart-item-thumb" src="{{ item.image | default: 'guide-cover.png' | asset_url }}" alt="{{ item.title | escape }}">
+            <img class="cart-item-thumb" width="72" height="72" src="{{ item.image | default: 'guide-cover.png' | asset_url }}" alt="{{ item.title | escape }}">
             <div class="cart-item-info">
               <h4 class="cart-item-title">{{ item.product.title | escape }}</h4>
               <div class="cart-item-price">{{ item.final_price | money_with_currency }}</div>

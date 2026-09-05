@@ -1,0 +1,30 @@
+<section class="section-space">
+  <div class="container">
+    <div class="eyebrow">RESOURCES</div>
+    <h1>{{ collection.title | escape }}</h1>
+    {% if collection.description != blank %}
+      <div style="color:var(--color-ink-muted);margin-top:12px;">{{ collection.description }}</div>
+    {% endif %}
+    {% paginate collection.products by 12 %}
+      <div class="kit-cards-grid">
+        {% for product in collection.products %}
+          <div class="kit-card">
+            <h3>{{ product.title | escape }}</h3>
+            <div style="font-family:var(--font-serif);font-size:22px;color:var(--color-caramel);margin-block:8px 16px;">{{ product.price | money_with_currency }}</div>
+            <a href="{{ product.url }}" class="btn btn-primary">Explore ↗</a>
+          </div>
+        {% else %}
+          <p>New resources are being prepared.</p>
+        {% endfor %}
+      </div>
+      {{ paginate | default_pagination }}
+    {% endpaginate %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main Collection",
+  "settings": []
+}
+{% endschema %}

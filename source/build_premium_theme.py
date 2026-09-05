@@ -16,6 +16,24 @@ PREVIEW_DIR = ROOT / 'output/store-preview'
 for sub in ['assets', 'config', 'layout', 'locales', 'sections', 'snippets', 'templates']:
     (THEME_DIR / sub).mkdir(parents=True, exist_ok=True)
 
+# Remove obsolete or conflicting legacy files
+obsolete_files = [
+    'sections/cart.liquid',
+    'sections/collection.liquid',
+    'sections/home.liquid',
+    'sections/main-product.liquid',
+    'sections/page.liquid',
+    'sections/product.liquid',
+    'snippets/email-popup.liquid',
+    'snippets/faq.liquid',
+    'snippets/kit-buy.liquid',
+    'snippets/kit-includes.liquid',
+]
+for obs in obsolete_files:
+    obs_path = THEME_DIR / obs
+    if obs_path.exists():
+        obs_path.unlink()
+
 def write_file(rel_path, content):
     p = THEME_DIR / rel_path
     p.parent.mkdir(parents=True, exist_ok=True)
@@ -1661,7 +1679,7 @@ write_file('snippets/cart-drawer.liquid', """
       {% if cart.item_count > 0 %}
         {% for item in cart.items %}
           <div class="cart-item-row">
-            <img class="cart-item-thumb" src="{{ item.image | default: 'guide-cover.png' | asset_url }}" alt="{{ item.title | escape }}">
+            <img class="cart-item-thumb" width="72" height="72" src="{{ item.image | default: 'guide-cover.png' | asset_url }}" alt="{{ item.title | escape }}">
             <div class="cart-item-info">
               <h4 class="cart-item-title">{{ item.product.title | escape }}</h4>
               <div class="cart-item-price">{{ item.final_price | money_with_currency }}</div>
@@ -1702,13 +1720,13 @@ write_file('snippets/sticky-atc.liquid', """
 <div class="sticky-atc-bar" data-sticky-atc-bar>
   <div class="sticky-atc-inner">
     <div class="sticky-atc-info">
-      <img class="sticky-atc-thumb" src="{{ 'guide-cover.png' | asset_url }}" alt="Bea's Calm-Alone Kit Cover">
+      <img class="sticky-atc-thumb" width="48" height="48" src="{{ 'guide-cover.png' | asset_url }}" alt="Bea's Calm-Alone Kit Cover">
       <div>
         <div class="sticky-atc-title">Bea's Calm-Alone Kit (Complete 3-in-1 Bundle)</div>
         <div class="sticky-atc-price">$29.00 USD <span style="font-size:12px;text-decoration:line-through;color:var(--color-ink-light)">$39.00</span></div>
       </div>
     </div>
-    <form action="/cart/add" method="post" style="margin:0;">
+    <form action="{{ routes.cart_add_url }}" method="post" style="margin:0;">
       <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id | default: 1 }}">
       <input type="hidden" name="quantity" value="1">
       <button type="submit" class="btn btn-caramel" style="padding:12px 24px;">
@@ -1717,29 +1735,6 @@ write_file('snippets/sticky-atc.liquid', """
     </form>
   </div>
 </div>
-""")
-
-write_file('snippets/kit-includes.liquid', """
-<ul class="kit-card-features" style="padding:0;border:none;margin-top:16px;">
-  <li>{% render 'icon-check' %} <strong>16-Page Practical Guide</strong> — observation frameworks & gentle routines</li>
-  <li>{% render 'icon-check' %} <strong>5-Page Fillable Workbook</strong> — 25 interactive fields for sessions & progress</li>
-  <li>{% render 'icon-check' %} <strong>1-Page Quick Reference</strong> — handy reminder to keep by your desk or door</li>
-</ul>
-""")
-
-write_file('snippets/kit-buy.liquid', """
-{% if kit != blank %}
-  <div class="product-price-box">
-    <span class="current-price">{{ kit.price | money_with_currency }}</span>
-    <span class="compare-price">$39.00 USD</span>
-    <span class="save-badge">Save $10 (Launch Price)</span>
-  </div>
-  <a class="btn btn-caramel" href="{{ kit.url }}">
-    Explore the Kit {% render 'icon-arrow' %}
-  </a>
-{% else %}
-  <p>The kit is being prepared.</p>
-{% endif %}
 """)
 
 # ==========================================
@@ -1813,7 +1808,7 @@ THEME_LIQUID = """<!doctype html>
     {% render 'sticky-atc' %}
   {% endif %}
 
-  {{ 'theme.js' | asset_url | script_tag }}
+  <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
 </body>
 </html>
 """
@@ -2174,7 +2169,7 @@ write_file('sections/featured-product.liquid', """
 
         <!-- Purchase Form -->
         <div class="purchase-controls">
-          <form action="/cart/add" method="post" enctype="multipart/form-data" id="FeaturedProductForm">
+          <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" id="FeaturedProductForm">
             <input type="hidden" name="id" value="{{ kit.selected_or_first_available_variant.id | default: 1 }}">
             
             <div class="quantity-row" style="margin-bottom:16px;">
@@ -2309,7 +2304,7 @@ write_file('sections/rich-story.liquid', """
   <div class="container">
     <div class="story-grid">
       <div class="story-photo-wrap">
-        <img class="story-photo" src="{{ 'bea.jpg' | asset_url }}" alt="Bea, the inspiration behind the project" loading="lazy">
+        <img class="story-photo" width="1200" height="1600" src="{{ 'bea.jpg' | asset_url }}" alt="Bea, the inspiration behind the project" loading="lazy">
       </div>
 
       <div class="story-content">
@@ -2535,7 +2530,7 @@ write_file('sections/main-cart.liquid', """
       <form action="{{ routes.cart_url }}" method="post" style="margin-top:40px;">
         {% for item in cart.items %}
           <div class="cart-item-row" style="padding-block:24px;">
-            <img class="cart-item-thumb" style="width:90px;height:90px;" src="{{ item.image | default: 'guide-cover.png' | asset_url }}" alt="{{ item.title | escape }}">
+            <img class="cart-item-thumb" width="90" height="90" style="width:90px;height:90px;" src="{{ item.image | default: 'guide-cover.png' | asset_url }}" alt="{{ item.title | escape }}">
             <div class="cart-item-info">
               <h3>{{ item.product.title | escape }}</h3>
               <div class="cart-item-price" style="font-size:20px;margin-block:6px;">{{ item.final_price | money_with_currency }}</div>
@@ -2593,17 +2588,34 @@ write_file('sections/main-page.liquid', """
 {% endschema %}
 """)
 
-write_file('sections/main-product.liquid', """
-{% render 'kit-includes' %}
-{% section 'featured-product' %}
-{% section 'kit-breakdown' %}
-{% section 'steps-process' %}
-{% section 'testimonials' %}
-{% section 'faq-accordion' %}
+write_file('sections/main-collection.liquid', """
+<section class="section-space">
+  <div class="container">
+    <div class="eyebrow">RESOURCES</div>
+    <h1>{{ collection.title | escape }}</h1>
+    {% if collection.description != blank %}
+      <div style="color:var(--color-ink-muted);margin-top:12px;">{{ collection.description }}</div>
+    {% endif %}
+    {% paginate collection.products by 12 %}
+      <div class="kit-cards-grid">
+        {% for product in collection.products %}
+          <div class="kit-card">
+            <h3>{{ product.title | escape }}</h3>
+            <div style="font-family:var(--font-serif);font-size:22px;color:var(--color-caramel);margin-block:8px 16px;">{{ product.price | money_with_currency }}</div>
+            <a href="{{ product.url }}" class="btn btn-primary">Explore ↗</a>
+          </div>
+        {% else %}
+          <p>New resources are being prepared.</p>
+        {% endfor %}
+      </div>
+      {{ paginate | default_pagination }}
+    {% endpaginate %}
+  </div>
+</section>
 
 {% schema %}
 {
-  "name": "Main Product",
+  "name": "Main Collection",
   "settings": []
 }
 {% endschema %}
@@ -2686,7 +2698,24 @@ write_json('templates/index.json', {
 
 write_json('templates/product.json', {
     "sections": {
-        "main": { "type": "main-product", "settings": {} }
+        "main": { "type": "featured-product", "settings": {} },
+        "breakdown": { "type": "kit-breakdown", "settings": {} },
+        "steps": { "type": "steps-process", "settings": {} },
+        "testimonials": { "type": "testimonials", "settings": {} },
+        "faq": { "type": "faq-accordion", "settings": {} }
+    },
+    "order": [
+        "main",
+        "breakdown",
+        "steps",
+        "testimonials",
+        "faq"
+    ]
+})
+
+write_json('templates/collection.json', {
+    "sections": {
+        "main": { "type": "main-collection", "settings": {} }
     },
     "order": ["main"]
 })

@@ -1,11 +1,31 @@
 {
   "sections": {
     "main": {
-      "type": "main-product",
+      "type": "featured-product",
+      "settings": {}
+    },
+    "breakdown": {
+      "type": "kit-breakdown",
+      "settings": {}
+    },
+    "steps": {
+      "type": "steps-process",
+      "settings": {}
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {}
+    },
+    "faq": {
+      "type": "faq-accordion",
       "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "breakdown",
+    "steps",
+    "testimonials",
+    "faq"
   ]
 }

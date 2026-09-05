@@ -41,7 +41,7 @@
 
         <!-- Purchase Form -->
         <div class="purchase-controls">
-          <form action="/cart/add" method="post" enctype="multipart/form-data" id="FeaturedProductForm">
+          <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" id="FeaturedProductForm">
             <input type="hidden" name="id" value="{{ kit.selected_or_first_available_variant.id | default: 1 }}">
             
             <div class="quantity-row" style="margin-bottom:16px;">

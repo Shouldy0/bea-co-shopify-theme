@@ -1931,7 +1931,7 @@ write_file('sections/hero-banner.liquid', """
     <div class="hero-grid">
       <div class="hero-content">
         <div class="eyebrow">{{ section.settings.eyebrow }}</div>
-        <h1>{{ section.settings.title }}</h1>
+        <h1>{% if section.settings.title != blank %}{{ section.settings.title }}{% else %}Small steps.<br>A little more<br><em>peace of mind.</em>{% endif %}</h1>
         <p class="lead-text">{{ section.settings.description }}</p>
 
         <div class="hero-actions">
@@ -1975,9 +1975,9 @@ write_file('sections/hero-banner.liquid', """
       "default": "FOR THE DOG YOU LOVE. AND THE LIFE YOU SHARE."
     },
     {
-      "type": "html",
+      "type": "inline_richtext",
       "id": "title",
-      "label": "Heading (HTML allowed)",
+      "label": "Heading",
       "default": "Small steps.<br>A little more<br><em>peace of mind.</em>"
     },
     {

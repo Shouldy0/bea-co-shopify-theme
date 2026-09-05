@@ -1935,7 +1935,7 @@ write_file('sections/hero-banner.liquid', """
         <p class="lead-text">{{ section.settings.description }}</p>
 
         <div class="hero-actions">
-          <a href="{{ section.settings.cta_url }}" class="btn btn-primary">
+          <a href="{{ section.settings.cta_url | default: '#the-kit' }}" class="btn btn-primary">
             {{ section.settings.cta_text }}
             {% render 'icon-arrow' %}
           </a>
@@ -1978,7 +1978,7 @@ write_file('sections/hero-banner.liquid', """
       "type": "inline_richtext",
       "id": "title",
       "label": "Heading",
-      "default": "Small steps.<br>A little more<br><em>peace of mind.</em>"
+      "default": "Small steps. A little more <em>peace of mind.</em>"
     },
     {
       "type": "textarea",
@@ -1995,8 +1995,7 @@ write_file('sections/hero-banner.liquid', """
     {
       "type": "url",
       "id": "cta_url",
-      "label": "Button link",
-      "default": "/#the-kit"
+      "label": "Button link"
     }
   ],
   "presets": [

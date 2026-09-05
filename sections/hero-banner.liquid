@@ -7,7 +7,7 @@
         <p class="lead-text">{{ section.settings.description }}</p>
 
         <div class="hero-actions">
-          <a href="{{ section.settings.cta_url }}" class="btn btn-primary">
+          <a href="{{ section.settings.cta_url | default: '#the-kit' }}" class="btn btn-primary">
             {{ section.settings.cta_text }}
             {% render 'icon-arrow' %}
           </a>
@@ -50,7 +50,7 @@
       "type": "inline_richtext",
       "id": "title",
       "label": "Heading",
-      "default": "Small steps.<br>A little more<br><em>peace of mind.</em>"
+      "default": "Small steps. A little more <em>peace of mind.</em>"
     },
     {
       "type": "textarea",
@@ -67,8 +67,7 @@
     {
       "type": "url",
       "id": "cta_url",
-      "label": "Button link",
-      "default": "/#the-kit"
+      "label": "Button link"
     }
   ],
   "presets": [

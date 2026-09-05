@@ -3,7 +3,7 @@ const path = require('path');
 const { Liquid } = require('/tmp/bea-theme-check/node_modules/liquidjs');
 
 const root = path.resolve(__dirname, '..');
-const dir = path.join(root, 'output/shopify/bea-theme');
+const dir = root;
 const out = path.join(root, 'output/store-preview');
 fs.mkdirSync(out, { recursive: true });
 

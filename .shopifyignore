@@ -1,0 +1,11 @@
+# Shopify Ignore File
+# Specifies files and directories that Shopify should ignore when syncing via GitHub
+
+output/
+source/
+tmp/
+.git/
+.gitignore
+.DS_Store
+**/.DS_Store
+*.md

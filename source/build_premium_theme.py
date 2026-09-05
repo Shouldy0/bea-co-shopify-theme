@@ -9,7 +9,7 @@ from pathlib import Path
 import json, shutil, zipfile, os
 
 ROOT = Path(__file__).resolve().parent.parent
-THEME_DIR = ROOT / 'output/shopify/bea-theme'
+THEME_DIR = ROOT
 PREVIEW_DIR = ROOT / 'output/store-preview'
 
 # Ensure directories exist
@@ -2855,9 +2855,11 @@ zip_path = ROOT / 'output/shopify/Bea-Calm-Shopify.zip'
 if zip_path.exists():
     zip_path.unlink()
 
+theme_folders = ['assets', 'config', 'layout', 'locales', 'sections', 'snippets', 'templates']
 with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as z:
-    for p in THEME_DIR.rglob('*'):
-        if p.is_file() and not p.name.endswith('.zip') and not p.name.startswith('.'):
-            z.write(p, p.relative_to(THEME_DIR))
+    for folder in theme_folders:
+        for p in (ROOT / folder).rglob('*'):
+            if p.is_file() and not p.name.startswith('.'):
+                z.write(p, p.relative_to(ROOT))
 
 print(f"✓ Premium theme built successfully! Packaged to: {zip_path}")

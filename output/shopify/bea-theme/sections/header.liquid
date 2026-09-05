@@ -1,0 +1,56 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="{{ routes.root_url }}" class="brand-logo" aria-label="Bea and Co Home">
+      bea <span>&</span> co<span class="dot"></span>
+    </a>
+
+    <nav class="main-nav" aria-label="Main Navigation">
+      <a href="{{ routes.root_url }}#the-kit">The Kit</a>
+      <a href="{{ routes.root_url }}#inside">What's Inside</a>
+      <a href="{{ routes.root_url }}#meet-bea">Meet Bea</a>
+      <a href="{{ routes.root_url }}#reviews">Reviews</a>
+      <a href="{{ routes.root_url }}#questions">FAQs</a>
+      <a href="{{ routes.root_url }}#contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="cart-toggle-btn" data-cart-toggle aria-label="Open Shopping Bag">
+        {% render 'icon-cart' %}
+        <span>Bag</span>
+        <span class="cart-count-badge" data-cart-count>{{ cart.item_count }}</span>
+      </button>
+
+      <button class="mobile-menu-btn" data-mobile-menu-toggle aria-label="Toggle menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Navigation Drawer -->
+<div class="mobile-nav-drawer" data-mobile-drawer>
+  <div class="mobile-nav-panel">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <span class="brand-logo" style="font-size:26px;">bea <span>&</span> co<span class="dot"></span></span>
+      <button class="cart-drawer-close" data-mobile-close aria-label="Close menu">{% render 'icon-close' %}</button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="{{ routes.root_url }}#the-kit" data-mobile-close>The Calm-Alone Kit</a>
+      <a href="{{ routes.root_url }}#inside" data-mobile-close>What's Inside</a>
+      <a href="{{ routes.root_url }}#meet-bea" data-mobile-close>Meet Bea</a>
+      <a href="{{ routes.root_url }}#reviews" data-mobile-close>Reviews & Stories</a>
+      <a href="{{ routes.root_url }}#questions" data-mobile-close>Frequently Asked Questions</a>
+      <a href="{{ routes.root_url }}#contact" data-mobile-close>Get in Touch</a>
+    </div>
+    <div style="margin-top:auto;padding-top:24px;border-top:1px solid var(--color-border);">
+      <a href="{{ routes.root_url }}#the-kit" class="btn btn-caramel btn-full" data-mobile-close>Get Your Kit ($29)</a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": []
+}
+{% endschema %}

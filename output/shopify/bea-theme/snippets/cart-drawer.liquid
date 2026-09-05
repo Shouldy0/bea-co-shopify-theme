@@ -1,0 +1,58 @@
+<div class="cart-drawer-overlay" data-cart-drawer-overlay>
+  <div class="cart-drawer" role="dialog" aria-modal="true" aria-label="Shopping Bag">
+    <div class="cart-drawer-header">
+      <h3>Your Bag (<span data-cart-item-count>{{ cart.item_count }}</span>)</h3>
+      <button class="cart-drawer-close" data-cart-drawer-close aria-label="Close cart">
+        {% render 'icon-close' %}
+      </button>
+    </div>
+    
+    <div class="cart-bonus-meter">
+      <div style="display:flex;justify-content:space-between;">
+        <span>✦ Instant Digital Access Unlocked</span>
+        <span style="color:var(--color-caramel)">100% Free Shipping</span>
+      </div>
+      <div class="meter-bar">
+        <div class="meter-fill" style="width: 100%;"></div>
+      </div>
+    </div>
+
+    <div class="cart-drawer-body">
+      {% if cart.item_count > 0 %}
+        {% for item in cart.items %}
+          <div class="cart-item-row">
+            <img class="cart-item-thumb" src="{{ item.image | default: 'guide-cover.png' | asset_url }}" alt="{{ item.title | escape }}">
+            <div class="cart-item-info">
+              <h4 class="cart-item-title">{{ item.product.title | escape }}</h4>
+              <div class="cart-item-price">{{ item.final_price | money_with_currency }}</div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px;">
+                <span style="font-size:12px;color:var(--color-ink-muted);">Qty: {{ item.quantity }}</span>
+                <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0" style="font-size:12px;color:var(--color-caramel);text-decoration:underline;">Remove</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div style="text-align:center;padding:48px 0;">
+          <p style="font-family:var(--font-serif);font-size:22px;margin-bottom:16px;">Your bag is waiting.</p>
+          <p style="color:var(--color-ink-muted);font-size:14px;margin-bottom:24px;">Discover Bea's Calm-Alone Kit to begin gentle, structured observations.</p>
+          <a href="{{ routes.root_url }}#the-kit" class="btn btn-primary" data-cart-drawer-close>Explore the Kit</a>
+        </div>
+      {% endif %}
+    </div>
+
+    {% if cart.item_count > 0 %}
+      <div class="cart-drawer-footer">
+        <div class="cart-subtotal-row">
+          <span>Subtotal</span>
+          <span class="cart-subtotal-price">{{ cart.total_price | money_with_currency }}</span>
+        </div>
+        <p class="cart-tax-notice">Taxes calculated at checkout. Instant digital download; no physical delivery required.</p>
+        <a href="/checkout" class="btn btn-caramel btn-full" style="padding-block:18px;">
+          Proceed to Secure Checkout
+          {% render 'icon-arrow' %}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>

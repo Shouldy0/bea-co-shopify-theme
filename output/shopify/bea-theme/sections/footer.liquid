@@ -1,0 +1,43 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top-grid">
+      <div class="footer-brand">
+        <a href="{{ routes.root_url }}" class="brand-logo" aria-label="Bea and Co">
+          bea <span>&</span> co<span class="dot"></span>
+        </a>
+        <p>Small steps. Thoughtful care. Practical digital resources for dogs and the people who care for them.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="{{ routes.root_url }}#the-kit">The Calm-Alone Kit</a></li>
+          <li><a href="{{ routes.root_url }}#inside">What's Inside</a></li>
+          <li><a href="{{ routes.root_url }}#meet-bea">Meet Bea</a></li>
+          <li><a href="{{ routes.root_url }}#reviews">Client Experiences</a></li>
+          <li><a href="{{ routes.root_url }}#questions">Frequently Asked Questions</a></li>
+          <li><a href="{{ routes.root_url }}#contact">Contact Support</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Veterinary & Care Notice</h4>
+        <div class="footer-disclaimer-box">
+          Owner-created educational support. Not veterinary medical diagnosis, individual clinical treatment, or a promise of specific behavioural recovery. Always seek veterinary care for sudden distress or injury.
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© {{ 'now' | date: '%Y' }} {{ shop.name | escape }}. All rights reserved.</span>
+      <span>Designed with quiet luxury for real companions.</span>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": []
+}
+{% endschema %}

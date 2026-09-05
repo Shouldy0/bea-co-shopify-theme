@@ -1,0 +1,15 @@
+<article class="section-space">
+  <div class="container" style="max-width:820px;">
+    <h1>{{ page.title | escape }}</h1>
+    <div style="margin-top:32px;font-size:16px;line-height:1.8;">
+      {{ page.content }}
+    </div>
+  </div>
+</article>
+
+{% schema %}
+{
+  "name": "Main Page",
+  "settings": []
+}
+{% endschema %}

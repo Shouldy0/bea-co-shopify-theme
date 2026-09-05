@@ -1,0 +1,41 @@
+{% if section.settings.show_announcement %}
+<div class="announcement-bar">
+  <div class="container">
+    <span>{{ section.settings.text }}</span>
+    {% if section.settings.link_text != blank %}
+      <a href="{{ section.settings.link_url }}">{{ section.settings.link_text }}</a>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Show announcement",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Announcement text",
+      "default": "✦ Launch edition: Instant download includes all 3 digital PDFs & 25 interactive fields."
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link label",
+      "default": "Explore the Kit →"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link destination"
+    }
+  ]
+}
+{% endschema %}

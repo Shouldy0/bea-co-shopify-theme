@@ -1,0 +1,18 @@
+<div class="sticky-atc-bar" data-sticky-atc-bar>
+  <div class="sticky-atc-inner">
+    <div class="sticky-atc-info">
+      <img class="sticky-atc-thumb" src="{{ 'guide-cover.png' | asset_url }}" alt="Bea's Calm-Alone Kit Cover">
+      <div>
+        <div class="sticky-atc-title">Bea's Calm-Alone Kit (Complete 3-in-1 Bundle)</div>
+        <div class="sticky-atc-price">$29.00 USD <span style="font-size:12px;text-decoration:line-through;color:var(--color-ink-light)">$39.00</span></div>
+      </div>
+    </div>
+    <form action="/cart/add" method="post" style="margin:0;">
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id | default: 1 }}">
+      <input type="hidden" name="quantity" value="1">
+      <button type="submit" class="btn btn-caramel" style="padding:12px 24px;">
+        Get Instant Access ↗
+      </button>
+    </form>
+  </div>
+</div>

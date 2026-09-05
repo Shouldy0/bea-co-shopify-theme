@@ -1,0 +1,68 @@
+<section id="questions" class="section-space" style="border-top:1px solid var(--color-border);">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:0.8fr 1.2fr;gap:60px;">
+      <div>
+        <div class="eyebrow">COMMON QUESTIONS</div>
+        <h2>Good questions.<br><em>Honest answers.</em></h2>
+        <p style="color:var(--color-ink-muted);margin-top:16px;">Everything you need to know about the format, delivery, and appropriate use of our materials.</p>
+        <div style="margin-top:32px;">
+          <a href="#contact" class="btn btn-secondary">Have Another Question?</a>
+        </div>
+      </div>
+
+      <div class="product-accordions">
+        <details class="accordion-item" open>
+          <summary>
+            <span>What exactly will I receive after purchase?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="accordion-content">
+            You will receive 3 high-quality English PDF files: the 16-page Calm-Alone Guide, the 5-page interactive Workbook with 25 fillable fields, and the 1-page Quick Reference summary. This is a 100% digital resource; nothing is physically shipped.
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary>
+            <span>Can I type into the workbook on my computer or tablet?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="accordion-content">
+            Yes! The workbook contains 25 native PDF form fields. Open it in Acrobat Reader, Apple Books, Chrome, or any standard PDF application, enter your notes, and save. You can also print blank copies if you prefer handwriting.
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary>
+            <span>Will this kit cure my dog's separation anxiety?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="accordion-content">
+            No specific medical outcome or fixed timeframe is guaranteed. The kit is designed to organize observations and provide structured support. It does not replace clinical veterinary diagnosis or an individualized treatment plan with a certified professional.
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary>
+            <span>Can I see sample pages before purchasing?</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="accordion-content">
+            Yes. You can open our <a href="{{ 'guide-preview.pdf' | asset_url }}" target="_blank" rel="noopener" style="color:var(--color-caramel);text-decoration:underline;">free preview sample</a> at any time to review the cover, table of contents, and sample observation logs.
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ Accordion",
+  "settings": [],
+  "presets": [
+    {
+      "name": "FAQ Accordion"
+    }
+  ]
+}
+{% endschema %}

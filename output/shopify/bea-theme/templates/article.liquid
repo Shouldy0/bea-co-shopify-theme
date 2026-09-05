@@ -1,0 +1,227 @@
+{%- comment -%}
+  Bea & Co — Article Template
+  Warm, honest, practical — consistent with brand voice
+{%- endcomment -%}
+
+<article class="article-page">
+  <header class="article-header wrap">
+    <p class="eyebrow">NOTES ON ALONE TIME</p>
+    <h1>{{ article.title | escape }}</h1>
+    <div class="article-meta">
+      <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%B %d, %Y' }}</time>
+      {%- if article.author -%}
+        <span class="article-author">By {{ article.author }}</span>
+      {%- endif -%}
+      {%- if article.tags.size > 0 -%}
+        <div class="article-tags">
+          {%- for tag in article.tags -%}
+            <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="tag">{{ tag | escape }}</a>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+    {%- if article.image -%}
+      <figure class="article-hero-image">
+        <img src="{{ article.image | image_url: width: 1200 }}" 
+             alt="{{ article.image.alt | escape }}" 
+             loading="eager" 
+             width="1200" 
+             height="600">
+      </figure>
+    {%- endif -%}
+  </header>
+
+  <div class="article-body wrap">
+    {{ article.content }}
+  </div>
+
+  <footer class="article-footer wrap section-space">
+    <div class="article-share">
+      <p class="eyebrow">SHARE THIS NOTE</p>
+      <div class="share-buttons">
+        <a href="https://twitter.com/intent/tweet?text={{ article.title | url_encode }}&url={{ shop.url | append: article.url | url_encode }}" 
+           target="_blank" rel="noopener" class="text-link">Twitter ↗</a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ shop.url | append: article.url | url_encode }}" 
+           target="_blank" rel="noopener" class="text-link">Facebook ↗</a>
+        <a href="https://pinterest.com/pin/create/button/?url={{ shop.url | append: article.url | url_encode }}&description={{ article.title | url_encode }}" 
+           target="_blank" rel="noopener" class="text-link">Pinterest ↗</a>
+      </div>
+    </div>
+    <div class="article-author-bio">
+      <p class="eyebrow">ABOUT BEA & CO.</p>
+      <p>Thoughtful digital resources for dog owners navigating separation anxiety. Owner-created. Not veterinary advice.</p>
+    </div>
+  </footer>
+</article>
+
+<style>
+.article-page {
+  padding: 60px 0;
+}
+
+.article-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 50px;
+}
+
+.article-header h1 {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin: 15px 0 25px;
+}
+
+.article-meta {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.article-meta time::after {
+  content: "·";
+  margin: 0 10px;
+}
+
+.article-tags {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  display: inline-block;
+  padding: 6px 14px;
+  background: #f5f3f0;
+  color: #555;
+  text-decoration: none;
+  font-size: 0.85rem;
+  border-radius: 3px;
+}
+
+.tag:hover {
+  background: #ebe8e3;
+}
+
+.article-hero-image {
+  margin: 40px 0 0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.article-hero-image img {
+  width: 100%;
+  height: auto;
+}
+
+.article-body {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+.article-body h2,
+.article-body h3 {
+  font-family: var(--font-serif);
+  margin: 40px 0 20px;
+}
+
+.article-body h2 {
+  font-size: 1.75rem;
+}
+
+.article-body h3 {
+  font-size: 1.4rem;
+}
+
+.article-body p {
+  margin-bottom: 25px;
+}
+
+.article-body ul,
+.article-body ol {
+  margin: 25px 0;
+  padding-left: 30px;
+}
+
+.article-body li {
+  margin-bottom: 10px;
+  line-height: 1.7;
+}
+
+.article-body blockquote {
+  border-left: 3px solid var(--color-accent);
+  padding-left: 25px;
+  margin: 30px 0;
+  font-style: italic;
+  color: #555;
+}
+
+.article-body strong {
+  color: #1a1a1a;
+}
+
+.article-body em {
+  font-style: italic;
+}
+
+.article-body a {
+  color: var(--color-accent);
+}
+
+.article-footer {
+  max-width: 700px;
+  margin: 60px auto 0;
+  padding-top: 40px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.article-share {
+  margin-bottom: 40px;
+}
+
+.share-buttons {
+  display: flex;
+  gap: 25px;
+}
+
+.article-author-bio {
+  background: #faf9f7;
+  padding: 30px;
+}
+
+.article-author-bio p:last-child {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .article-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .article-body {
+    font-size: 1rem;
+  }
+  
+  .share-buttons {
+    flex-wrap: wrap;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Article",
+  "presets": [
+    {
+      "name": "Article"
+    }
+  ]
+}
+{% endschema %}

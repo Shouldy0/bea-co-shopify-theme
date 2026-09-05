@@ -1,0 +1,51 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {}
+    },
+    "ticker": {
+      "type": "values-ticker",
+      "settings": {}
+    },
+    "breakdown": {
+      "type": "kit-breakdown",
+      "settings": {}
+    },
+    "featured": {
+      "type": "featured-product",
+      "settings": {}
+    },
+    "steps": {
+      "type": "steps-process",
+      "settings": {}
+    },
+    "story": {
+      "type": "rich-story",
+      "settings": {}
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {}
+    },
+    "faq": {
+      "type": "faq-accordion",
+      "settings": {}
+    },
+    "contact": {
+      "type": "contact-section",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "ticker",
+    "breakdown",
+    "featured",
+    "steps",
+    "story",
+    "testimonials",
+    "faq",
+    "contact"
+  ]
+}

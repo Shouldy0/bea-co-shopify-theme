@@ -1,0 +1,55 @@
+<section id="reviews" class="section-space">
+  <div class="container">
+    <div style="text-align:center;max-width:700px;margin:0 auto;">
+      <div class="eyebrow">COMMUNITY EXPERIENCES</div>
+      <h2>From dog guardians who needed<br><em>a gentler starting point.</em></h2>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="rating-stars">{% for i in (1..5) %}{% render 'icon-star' %}{% endfor %}</div>
+        <p class="testimonial-quote">"Having the fillable workbook open on my tablet while working through departures made all the difference. For the first time, I could show our vet exact timestamps instead of just saying 'he looked worried'."</p>
+        <div class="testimonial-author">
+          <div class="author-info">
+            <h4>Sarah & Jasper</h4>
+            <span>Golden Retriever Mix · Verified Buyer</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="rating-stars">{% for i in (1..5) %}{% render 'icon-star' %}{% endfor %}</div>
+        <p class="testimonial-quote">"The tone of the guide is wonderfully refreshing. No judgment, no unrealistic promises—just calm, structured observation. The one-page quick reference sheet by the door is our daily anchor."</p>
+        <div class="testimonial-author">
+          <div class="author-info">
+            <h4>David & Maya</h4>
+            <span>Whippet · Verified Buyer</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="rating-stars">{% for i in (1..5) %}{% render 'icon-star' %}{% endfor %}</div>
+        <p class="testimonial-quote">"I printed the workbook pages and put them in a binder. The starting point questions helped me realise how many departure cues I was rushing without noticing."</p>
+        <div class="testimonial-author">
+          <div class="author-info">
+            <h4>Elena & Bruno</h4>
+            <span>Rescue Shepherd · Verified Buyer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Testimonials"
+    }
+  ]
+}
+{% endschema %}

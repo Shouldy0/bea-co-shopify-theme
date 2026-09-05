@@ -1,0 +1,44 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Bea & Co. Premium",
+    "theme_version": "2.0.0",
+    "theme_author": "Bea & Co.",
+    "theme_documentation_url": "https://github.com/Shouldy0/bea-co-shopify-theme",
+    "theme_support_url": "https://bea-co.it"
+  },
+  {
+    "name": "Brand Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_bg",
+        "label": "Background (Cream)",
+        "default": "#F8F5EE"
+      },
+      {
+        "type": "color",
+        "id": "color_ink",
+        "label": "Text & Primary (Deep Ink)",
+        "default": "#1C2B25"
+      },
+      {
+        "type": "color",
+        "id": "color_caramel",
+        "label": "Accent (Warm Caramel)",
+        "default": "#9E5B32"
+      }
+    ]
+  },
+  {
+    "name": "Cart Drawer",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_cart_drawer",
+        "label": "Enable Ajax Slide-out Cart Drawer",
+        "default": true
+      }
+    ]
+  }
+]

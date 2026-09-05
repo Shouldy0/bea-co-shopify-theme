@@ -1,0 +1,71 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <title>{{ page_title | escape }}{% unless page_title contains shop.name %} · {{ shop.name | escape }}{% endunless %}</title>
+  <meta name="description" content="{{ page_description | default: 'A thoughtful guide and fillable workbook for the small steps around alone time. Meet Bea & Co.' | escape }}">
+
+  <!-- OpenGraph & Twitter Cards -->
+  <meta property="og:site_name" content="{{ shop.name | escape }}">
+  <meta property="og:url" content="{{ canonical_url }}">
+  <meta property="og:title" content="{{ page_title | escape }}">
+  <meta property="og:type" content="{% if request.page_type == 'product' %}product{% else %}website{% endif %}">
+  <meta property="og:description" content="{{ page_description | default: 'Small steps. Thoughtful care. Discover the Calm-Alone Kit from Bea & Co.' | escape }}">
+  <meta property="og:image" content="https:{{ 'guide-cover.png' | asset_url }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page_title | escape }}">
+  <meta name="twitter:description" content="{{ page_description | default: 'Small steps. Thoughtful care. Discover the Calm-Alone Kit from Bea & Co.' | escape }}">
+
+  {{ content_for_header }}
+
+  <!-- Stylesheets -->
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+
+  <!-- Theme Settings Custom Properties -->
+  <style>
+    :root {
+      --color-bg: {{ settings.color_bg | default: '#F8F5EE' }};
+      --color-ink: {{ settings.color_ink | default: '#1C2B25' }};
+      --color-caramel: {{ settings.color_caramel | default: '#9E5B32' }};
+    }
+  </style>
+
+  <!-- Structured Data JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "{{ shop.name | escape }}",
+    "url": "{{ shop.url }}",
+    "logo": "https:{{ 'guide-cover.png' | asset_url }}",
+    "sameAs": []
+  }
+  </script>
+</head>
+<body class="template-{{ request.page_type }}">
+  <a class="skip-link" href="#MainContent">Skip to content</a>
+
+  {% section 'announcement-bar' %}
+  {% section 'header' %}
+
+  <main id="MainContent" role="main" tabindex="-1">
+    {{ content_for_layout }}
+  </main>
+
+  {% section 'footer' %}
+
+  <!-- Drawer Cart & Sticky CTA Elements -->
+  {% render 'cart-drawer' %}
+  {% if request.page_type == 'product' or request.page_type == 'index' %}
+    {% render 'sticky-atc' %}
+  {% endif %}
+
+  {{ 'theme.js' | asset_url | script_tag }}
+</body>
+</html>

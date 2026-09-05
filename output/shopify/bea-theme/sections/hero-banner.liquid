@@ -1,0 +1,80 @@
+<section class="section-space">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+        <h1>{{ section.settings.title }}</h1>
+        <p class="lead-text">{{ section.settings.description }}</p>
+
+        <div class="hero-actions">
+          <a href="{{ section.settings.cta_url }}" class="btn btn-primary">
+            {{ section.settings.cta_text }}
+            {% render 'icon-arrow' %}
+          </a>
+          <a href="{{ 'guide-preview.pdf' | asset_url }}" target="_blank" rel="noopener" class="text-btn">
+            Take a Look Inside (Free Preview)
+          </a>
+        </div>
+
+        <div class="hero-meta-strip">
+          <span class="hero-meta-item">{% render 'icon-check' %} 3 English PDFs</span>
+          <span class="hero-meta-item">{% render 'icon-check' %} 25 Fillable & Printable Fields</span>
+          <span class="hero-meta-item">{% render 'icon-check' %} One-Time Purchase</span>
+        </div>
+      </div>
+
+      <div class="hero-media-wrap">
+        <div class="hero-photo-frame">
+          <img src="{{ 'bea.jpg' | asset_url }}" width="1200" height="1600" alt="Bea, the real dog behind Bea & Co." fetchpriority="high">
+        </div>
+        <div class="hero-floating-badge">
+          Meet Bea.
+          <em>Made with dogs in mind ✦</em>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow tag",
+      "default": "FOR THE DOG YOU LOVE. AND THE LIFE YOU SHARE."
+    },
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Heading (HTML allowed)",
+      "default": "Small steps.<br>A little more<br><em>peace of mind.</em>"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "When alone time feels difficult, knowing what to notice is a place to start. A thoughtful, practical guide and fillable workbook created for you and your dog."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Meet your calm-alone kit"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button link",
+      "default": "/#the-kit"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner"
+    }
+  ]
+}
+{% endschema %}

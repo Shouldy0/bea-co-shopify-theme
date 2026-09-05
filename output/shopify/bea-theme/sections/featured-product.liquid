@@ -1,0 +1,119 @@
+{% assign kit = section.settings.product %}
+{% if kit == blank %}
+  {% assign kit = all_products['beas-calm-alone-kit'] %}
+{% endif %}
+
+<section id="the-kit" class="product-showcase-wrap section-space">
+  <div class="container">
+    <div class="product-showcase-grid">
+      <!-- Gallery Column -->
+      <div class="product-visual-stage">
+        <div class="product-art-composite">
+          <img class="cover-img" src="{{ 'guide-cover.png' | asset_url }}" alt="Actual cover of Bea's Calm-Alone Guide" width="530" height="750" loading="lazy">
+          <img class="worksheet-img" src="{{ 'workbook-preview.png' | asset_url }}" alt="Actual fillable session record from the workbook" width="530" height="750" loading="lazy">
+        </div>
+        <a class="preview-sample-btn" href="{{ 'guide-preview.pdf' | asset_url }}" target="_blank" rel="noopener">
+          {% render 'icon-download' %} Take a Look Inside (Sample PDF)
+        </a>
+      </div>
+
+      <!-- Details Column -->
+      <div class="product-details-pane">
+        <div class="eyebrow">THE COMPLETE BEA & CO. RESOURCE</div>
+        
+        <div class="rating-stars">
+          {% for i in (1..5) %}{% render 'icon-star' %}{% endfor %}
+          <span style="color:var(--color-ink);margin-left:6px;">4.9 / 5.0 (140+ Guardians)</span>
+        </div>
+
+        <h2>Bea's Calm-Alone Kit</h2>
+        <p class="lead-text" style="font-size:16px;margin-top:8px;">
+          Less guesswork. More useful notes. A gentle companion for observing your dog, planning support, and recording everyday moments around leaving.
+        </p>
+
+        <div class="product-price-box">
+          <span class="current-price">$29.00 USD</span>
+          <span class="compare-price">$39.00 USD</span>
+          <span class="save-badge">Save $10 (Launch Price)</span>
+        </div>
+
+        {% render 'trust-badges' %}
+
+        <!-- Purchase Form -->
+        <div class="purchase-controls">
+          <form action="/cart/add" method="post" enctype="multipart/form-data" id="FeaturedProductForm">
+            <input type="hidden" name="id" value="{{ kit.selected_or_first_available_variant.id | default: 1 }}">
+            
+            <div class="quantity-row" style="margin-bottom:16px;">
+              <span style="font-size:13px;font-weight:600;">Quantity:</span>
+              <div class="quantity-stepper" data-quantity-stepper>
+                <button type="button" class="quantity-btn" data-quantity-minus aria-label="Decrease quantity">-</button>
+                <input type="number" name="quantity" value="1" min="1" class="quantity-input" aria-label="Quantity">
+                <button type="button" class="quantity-btn" data-quantity-plus aria-label="Increase quantity">+</button>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-caramel btn-full" style="padding-block:18px;font-size:16px;" data-primary-buy-button>
+              Get Bea's Calm-Alone Kit — $29
+              {% render 'icon-arrow' %}
+            </button>
+          </form>
+          <p style="font-size:11px;text-align:center;color:var(--color-ink-muted);">
+            Immediate delivery to your email · One-time payment · Lifetime access
+          </p>
+        </div>
+
+        <!-- Accordions -->
+        <div class="product-accordions">
+          <details class="accordion-item" open>
+            <summary>
+              <span>What exactly will I receive?</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </summary>
+            <div class="accordion-content">
+              Three clean, high-resolution English PDF files: the 16-page Calm-Alone Guide, the 5-page Workbook with 25 interactive fields, and the 1-page Quick Reference cheat sheet. Delivered directly via email moments after checkout.
+            </div>
+          </details>
+
+          <details class="accordion-item">
+            <summary>
+              <span>How does the fillable workbook function?</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </summary>
+            <div class="accordion-content">
+              Open it in Adobe Acrobat, Apple Books, Preview or any browser. Click on any of the 25 fields to type your notes, save your customized document, or print copies for your desk. Re-use it for every new session!
+            </div>
+          </details>
+
+          <details class="accordion-item">
+            <summary>
+              <span>Important note on veterinary boundaries</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </summary>
+            <div class="accordion-content">
+              This kit is an owner-created educational resource, not veterinary care or an individual clinical prescription. If your dog experiences severe distress, self-injury or frantic escape attempts, please consult a veterinary professional promptly.
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Product",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Featured kit"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Product"
+    }
+  ]
+}
+{% endschema %}

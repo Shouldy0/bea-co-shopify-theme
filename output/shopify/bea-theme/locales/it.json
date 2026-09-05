@@ -1,0 +1,15 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "Salta al contenuto",
+      "close": "Chiudi"
+    }
+  },
+  "sections": {
+    "cart": {
+      "title": "La tua borsa",
+      "empty": "Il tuo carrello è vuoto.",
+      "checkout": "Procedi al Checkout Sicuro"
+    }
+  }
+}

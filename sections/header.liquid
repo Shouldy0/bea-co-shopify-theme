@@ -1,3 +1,13 @@
+<style>
+  #shopify-section-{{ section.id }} {
+    position: sticky;
+    top: 0;
+    z-index: 90;
+  }
+  #shopify-section-{{ section.id }} .site-header {
+    position: relative;
+  }
+</style>
 <header class="site-header">
   <div class="container header-inner">
     <a href="{{ routes.root_url }}" class="brand-logo" aria-label="Bea and Co Home">
